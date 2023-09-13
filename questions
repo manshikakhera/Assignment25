@@ -1,0 +1,284 @@
+
+#include <iostream>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if (isPrime(n)) {
+        cout << n << " is a prime number." << endl;
+    } else {
+        cout << n << " is not a prime number." << endl;
+    }
+
+    return 0;
+}
+Factorial Calculator:
+
+#include <iostream>
+using namespace std;
+
+long long factorial(int n) {
+    if (n == 0 || n == 1) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    long long result = factorial(n);
+    cout << "Factorial of " << n << " is " << result << endl;
+
+    return 0;
+}
+Simple Calculator:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char op;
+    double num1, num2;
+
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> op;
+
+    cout << "Enter two numbers: ";
+    cin >> num1 >> num2;
+
+    switch(op) {
+        case '+':
+            cout << "Result: " << num1 + num2 << endl;
+            break;
+        case '-':
+            cout << "Result: " << num1 - num2 << endl;
+            break;
+        case '*':
+            cout << "Result: " << num1 * num2 << endl;
+            break;
+        case '/':
+            if (num2 != 0) {
+                cout << "Result: " << num1 / num2 << endl;
+            } else {
+                cout << "Error: Division by zero." << endl;
+            }
+            break;
+        default:
+            cout << "Invalid operator." << endl;
+    }
+
+    return 0;
+}
+Complex Number Class:
+
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    int a; // Real part
+    int b; // Imaginary part
+
+public:
+    Complex() : a(0), b(0) {}
+
+    void setData(int real, int imag) {
+        a = real;
+        b = imag;
+    }
+
+    void showData() {
+        if (b >= 0) {
+            cout << a << " + " << b << "i" << endl;
+        } else {
+            cout << a << " - " << -b << "i" << endl;
+        }
+    }
+
+    Complex add(Complex other) {
+        Complex result;
+        result.a = a + other.a;
+        result.b = b + other.b;
+        return result;
+    }
+};
+
+int main() {
+    Complex complex1, complex2, sum;
+    
+    complex1.setData(3, 4);
+    complex2.setData(1, -2);
+
+    cout << "Complex Number 1: ";
+    complex1.showData();
+
+    cout << "Complex Number 2: ";
+    complex2.showData();
+
+    sum = complex1.add(complex2);
+    cout << "Sum of Complex Numbers: ";
+    sum.showData();
+
+    return 0;
+}
+Largest Number Class:
+
+#include <iostream>
+using namespace std;
+
+class LargestNumber {
+public:
+    int findLargest(int a, int b, int c) {
+        return max(a, max(b, c));
+    }
+};
+
+int main() {
+    LargestNumber largest;
+
+    int num1, num2, num3;
+    cout << "Enter three numbers: ";
+    cin >> num1 >> num2 >> num3;
+
+    int maxNum = largest.findLargest(num1, num2, num3);
+    cout << "Largest number: " << maxNum << endl;
+
+    return 0;
+}
+Reverse Number Class:
+
+#include <iostream>
+using namespace std;
+
+class ReverseNumber {
+public:
+    int reverse(int num) {
+        int reversed = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return reversed;
+    }
+};
+
+int main() {
+    ReverseNumber reverser;
+
+    int n;
+    cout << "Enter a number to reverse: ";
+    cin >> n;
+
+    int reversed = reverser.reverse(n);
+    cout << "Reversed number: " << reversed << endl;
+
+    return 0;
+}
+Square Function with Call Count:
+
+#include <iostream>
+using namespace std;
+
+class Square {
+private:
+    int callCount = 0;
+
+public:
+    int square(int num) {
+        callCount++;
+        return num * num;
+    }
+
+    int getCallCount() {
+        return callCount;
+    }
+};
+
+int main() {
+    Square squareCalculator;
+    
+    int num;
+    cout << "Enter a number to square: ";
+    cin >> num;
+
+    int squared = squareCalculator.square(num);
+    cout << "Square of " << num << " is " << squared << endl;
+    cout << "Function called " << squareCalculator.getCallCount() << " times." << endl;
+
+    return 0;
+}
+Greatest Number Class:
+
+#include <iostream>
+using namespace std;
+
+class Greatest {
+public:
+    int findGreatest(int a, int b, int c) {
+        return max(a, max(b, c));
+    }
+};
+
+int main() {
+    Greatest greatest;
+
+    int num1, num2, num3;
+    cout << "Enter three numbers: ";
+    cin >> num1 >> num2 >> num3;
+
+    int maxNum = greatest.findGreatest(num1, num2, num3);
+    cout << "Greatest number: " << maxNum << endl;
+
+    return 0;
+}
+Area of Shapes Class (Square, Rectangle, Circle):
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Area {
+public:
+    static double calculateAreaSquare(double side) {
+        return side * side;
+    }
+
+    static double calculateAreaRectangle(double length, double width) {
+        return length * width;
+    }
+
+    static double calculateAreaCircle(double radius) {
+        return M_PI * radius * radius;
+    }
+};
+
+int main() {
+    double side, length, width, radius;
+    
+    cout << "Enter side length of a square: ";
+    cin >> side;
+    cout << "Area of square: " << Area::calculateAreaSquare(side) << endl;
+
+    cout << "Enter length and width of a rectangle: ";
+    cin >> length >> width;
+    cout << "Area of rectangle: " << Area::calculateAreaRectangle(length, width) << endl;
+
+    cout << "Enter radius of a circle: ";
+    cin >> radius;
+    cout << "Area of circle: " << Area::calculateAreaCircle(radius) << endl;
+
+    return 0;
+}
